@@ -2,7 +2,7 @@
 // @name:en-US         CCTV-HLS-Client
 // @name               CCTV视频客户端解析
 // @description:en-US  parse cctv video to hls url.greasyfork.org/scripts/558396/
-// @description        将CCTV视频解析成HLS地址.因CDN屏蔽,换成h5e接口下载,解密也请改成h5e方式
+// @description        将CCTV视频解析成HLS地址.
 // @namespace          https://greasyfork.org/users/135090
 // @version            1.1.8
 // @author             [ZWB](https://greasyfork.org/zh-CN/users/863179)
@@ -149,8 +149,7 @@
                 font-size: 16px;`;
                 document.querySelector("#ht").appendChild(h5etag);
                 hlsUrl = data?.hls_url?.replaceAll("main", brt[1]);
-                // ★若要下载未加密的850.m3u8,请删除'h5e || '使下一行代码变成 fnu = hlsUrl;
-                fnu = h5e || hlsUrl; 
+                fnu = hlsUrl; 
             } else {
                 hlsUrl = data?.hls_url?.replaceAll("main", brt[bi]);
                 fnu = hlsUrl;
@@ -178,7 +177,7 @@
                     break;
                 default :
                     bi = 0;
-                    console.log();
+                    console.log("最低清晰度");
             }
             let rh5e = h5eUrl.replaceAll("main", brt[bi]);
             let h5etag = document.createElement("p");
@@ -191,23 +190,14 @@
             border: none;
             font-size: 16px;`;
             document.querySelector("#ht").appendChild(h5etag);
-            if (confirm("是否开始下载?\r\n"+brt[bi])){
-                await dmv(rh5e, totalLengthSec, title + '.ts', {
-                    onProgress: (current, total) => {
-                        let cotp = `${Math.round((current / total) * 100)}`;
-                        h5etag.textContent = title + "---下载进程" + cotp + "%";
-                        console.info(`Progress: ${current}/${total} (${cotp}%)`);
-                    }
-                });
-            }
-            return;
+            return 0;
         }
         let hlstag = document.createElement("a");
-        hlstag.href = hlsUrl;
-        hlstag.alt = hlsUrl;
+        hlstag.href = fnu;
+        hlstag.alt = fnu;
         hlstag.id = "hlstag";
         hlstag.target = "_blank";
-        hlstag.textContent = hlsUrl;
+        hlstag.textContent = fnu;
         hlstag.style = `
         padding: 2px;
         border: none;
