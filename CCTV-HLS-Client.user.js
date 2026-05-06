@@ -101,6 +101,9 @@
         const prebody = document?.body?.querySelector('pre')?.textContent || document?.body?.textContent;
 		const data = JSON.parse(prebody);
         let enc2url = new URL(data?.manifest?.hls_enc2_url);
+		// 获取enc2原始CDN,enc2接口链接无法用浏览器下载
+		const apicdn = enc2url.hostname;
+		console.log("enc2 接口的原始CDN -> "+apicdn);
         // ★将 enc2url.hostname 的值改成可用的enc2接口cdn域名
         enc2url.hostname = "drm.cntv.vod.dnsv1.com"; 
         // ★将 switchh5e 的值改成 非0 的数字,则使用h5e接口; switchh5e 的值为 0 时,则使用enc2接口
@@ -139,9 +142,8 @@
             } else if (brtnum > 3){
                 h5e = h5eUrl.replaceAll("main", brt[3]);
                 let h5etag =document.createElement("p");
-                let cdn = h5e.split("/")[2];
                 h5etag.id = "h5etag";
-                h5etag.textContent = cdn +"<->"+thisguid;
+                h5etag.textContent = "GUID  ->  " + thisguid;
                 h5etag.innerHTML += "<br>".concat(h5e.link(h5e));
                 h5etag.style = `
                 padding: 2px;
@@ -181,9 +183,8 @@
             }
             let rh5e = h5eUrl.replaceAll("main", brt[bi]);
             let h5etag = document.createElement("p");
-            let cdn = rh5e.split("/")[2];
             h5etag.id = "h5etag";
-            h5etag.textContent = cdn +"<->"+thisguid;
+            h5etag.textContent = "GUID  ->  " + thisguid;
             h5etag.innerHTML += "<br>".concat(rh5e.link(rh5e));
             h5etag.style = `
             padding: 2px;
