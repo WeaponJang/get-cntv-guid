@@ -136,6 +136,9 @@
             if (data?.play_channel?.indexOf("CCTV-4K") == 0) {
                 hlsUrl = data?.hls_url?.replaceAll("main", brt[4]);
                 fnu = hlsUrl;
+			}  else if (data?.play_channel?.indexOf("CCTV-16") == 0){
+				hlsUrl = data?.hls_url?.replaceAll("main", "3000");
+                fnu = hlsUrl;
             }  else if(m3u8Content.includes("1200.m3u8")){
                 hlsUrl = data?.hls_url?.replaceAll("main", brt[3]);
                 fnu = hlsUrl;
