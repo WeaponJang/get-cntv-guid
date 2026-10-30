@@ -489,7 +489,7 @@ function isMp4File(file) {
 }
 
 function remuxToMp4(input, tmpPath, quiet) {
-    const args = ['-y', '-i', input, '-map', '0', '-c', 'copy', '-f', 'mp4', tmpPath];
+    const args = ['-y', '-i', input, '-map', '0', '-c', 'copy', '-movflags', '+faststart', '-f', 'mp4', tmpPath];
     if (quiet) args.unshift('-loglevel', 'error');
     const r = spawnSync('ffmpeg', args, { stdio: quiet ? 'ignore' : 'inherit' });
     if (r.error) throw new Error('无法执行 ffmpeg（未安装或不在 PATH）: ' + r.error.message);
