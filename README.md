@@ -14,12 +14,12 @@
 + ENC2接口的链接需要关闭https校验访问,导致浏览器上无法正常下载,因此可以借助 **N_m3u8DL-CLI-NET8** 这个命令行工具
 
 *************************************************************
-## N_m3u8DL-CLI-NET8 命令行工具
+## N_m3u8DL-NET8 命令行工具
 ### 一个m3u8链接下载器命令行版
-+ 原版来自 **https://github.com/nilaoda/N_m3u8DL-CLI**
++ 源码来自 **https://github.com/nilaoda/N_m3u8DL-CLI**
 + 原版基于 .netfx 4.6 ,鉴于运行时不够现代,此版改用 dotnet 8 重构,支持的命令行参数不变
-+ **N_m3u8DL-CLI_v3.0.2_net8_win-x64.tar.xz** 是编译产物,解压出的单文件自包含运行时,可直接在 Win10+ 系统上运行
-+ **N_m3u8DL-CLI-NET8-src.zip** 是源码的 zip 打包文件,编译至少需要用 DOTNET 8 的 sdk,dotnet 10的SDK尚未测试
++ **N_m3u8DL-CLI.zip** 是编译产物压缩包,解压出的单文件自包含运行时,可直接在 Win10+ 系统上运行
++ **N_m3u8DL-NET8-src.zip** 是源码的 zip 打包文件,编译至少需要用 DOTNET 8 的 sdk,dotnet 10的SDK尚未测试
 
 *************************************************************
 ## udrm-dec.cjs nodejs脚本
